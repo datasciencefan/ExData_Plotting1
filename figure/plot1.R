@@ -8,14 +8,9 @@ unlink(temp)
 #Add column names to data
 colnames(data) <- colnames(dataHeader)
 
-#Combine Date and Time columns
-newdata <- data[,2:9]
-newdata$Time <- paste(data$Date, data$Time, sep=" ")
-newdata$Time <- strptime(newdata$Time, format = "%d/%m/%Y %H:%M:%S")
-
 #Plot the graph and save in png form
 png(file = "plot1.png")
-with(newdata, hist(Global_active_power, breaks = 14, col="red", xlab = "Global Active Power (kilowatts)", main = "Global Active Power"))
+with(data, hist(Global_active_power, breaks = 14, col="red", xlab = "Global Active Power (kilowatts)", main = "Global Active Power"))
 dev.off()
 
 
